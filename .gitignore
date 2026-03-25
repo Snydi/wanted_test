@@ -1,0 +1,5 @@
+/vendor/
+/.phpunit.cache/
+/.phpstan/
+/.idea
+README.md
