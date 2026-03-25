@@ -1,4 +1,4 @@
-.PHONY: setup test stan shell
+.PHONY: setup test clean
 
 DC = docker compose
 
@@ -9,8 +9,6 @@ setup:
 test:
 	$(DC) run --rm app ./vendor/bin/phpunit
 
-stan:
-	$(DC) run --rm app ./vendor/bin/phpstan analyse src --level=8
-
-shell:
-	$(DC) run --rm app sh
+clean:
+	-$(DC) run --rm app rm -rf /app/vendor
+	$(DC) down --rmi all --volumes --remove-orphans
